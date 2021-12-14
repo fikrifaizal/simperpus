@@ -20,14 +20,14 @@ if($action == "tambah"){
 
   // tambah ke database
   if(isset($_POST['tambah'])){
-    if(isset($_POST['excel'])){
+    if(!empty($_FILES['excel']['name'])){
       $ekstensi_diperbolehkan	= "xlsx";
       $namaFile	= $_FILES['excel']['name'];
       $ekstensiFile = explode(".", $namaFile);
       $ekstensiFile = strtolower(end($ekstensiFile));
   
       if($ekstensiFile == $ekstensi_diperbolehkan){
-        include('../../extensions/SimpleXLSX.php');
+        include('../../../vendor/shuchkin/simplexlsx/src/SimpleXLSX.php');
   
         $excel = SimpleXLSX::parse($_FILES['excel']['tmp_name']);
         
@@ -40,13 +40,14 @@ if($action == "tambah"){
               // get data from excel
               $q.="'".$cell. "',";
             }
-            // insert into database          
+            // insert into database
             $query = "INSERT INTO ".$excel->sheetName(0)." VALUES (".rtrim($q,",").")";
             $insert = mysqli_query($conn, $query);
           }
         }
       }
-    } else {
+    }
+    else {
       $nisn = $_POST['nisn'];
       $nama = $_POST['nama'];
       $angkatan = $_POST['angkatan'];
