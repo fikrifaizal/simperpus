@@ -13,5 +13,8 @@
             "name": "fikrifaizal",
             "email": "fikrifaizal40@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "shuchkin/simplexlsx": "^0.8.31"
+    }
 }
