@@ -1,4 +1,5 @@
 <?php 
+include_once('confiq.php');
 //cek login
 // user
 if(isset($_COOKIE['id'])){
