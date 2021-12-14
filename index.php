@@ -10,15 +10,14 @@ switch ($request) {
     case $me.'/' :
         require "home.php";
         break;
-    case $me.'/buku' :
-        require "views/about.php";
+    case $me.'/home' :
+        require "home.php";
         break;
     case $me.'/contact' :
         require "views/contact.php";
         break;
     default:
-        http_response_code(404);
-        echo "404";
+        require "views/about.php";
         break;
 }
 
