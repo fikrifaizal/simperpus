@@ -22,7 +22,7 @@ switch ($request) {
         break;
 }
 
-include_once('confiq.php');
+require('confiq.php');
 //cek login
 // user
 if(isset($_COOKIE['id'])){
