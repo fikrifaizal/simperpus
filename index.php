@@ -51,8 +51,8 @@ if(isset($_COOKIE['id'])){
   <body>
     <!-- sidebar & navbar -->
     <?php
-      include('./account/basic/layout/sidebar.html');
-      include('./home.php');
+      include('account/basic/layout/sidebar.html');
+      include('home.php');
     ?>
   </body>
 </html>
