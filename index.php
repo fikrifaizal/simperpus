@@ -1,27 +1,5 @@
 <?php 
-
-$project_location = "/SimPerpus%20SMK%20Muh%201%20Surakarta";
-$me = $project_location;
-
-// For get URL PATH
-$request = $_SERVER['REQUEST_URI'];
-
-switch ($request) {
-    case $me.'/' :
-        require "home.php";
-        break;
-    case $me.'/home' :
-        require "home.php";
-        break;
-    case $me.'/contact' :
-        require "views/contact.php";
-        break;
-    default:
-        require "views/about.php";
-        break;
-}
-
-require('confiq.php');
+include_once('confiq.php');
 //cek login
 // user
 if(isset($_COOKIE['id'])){
