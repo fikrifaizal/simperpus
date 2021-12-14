@@ -1,0 +1,61 @@
+html, body {
+  color: #718096 !important;
+  background-color: #edf2f7;
+  scroll-behavior: smooth;
+  height: 95%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+body,
+button {
+  font-family: "Poppins", sans-serif;
+}
+
+.transition {
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: auto;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 15px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.logo {
+  display: initial;
+  width: 120px;
+  height: 120px;
+}
+
+@media (min-width: 992px) {
+  body {
+    overflow: auto !important;
+  }
+}
