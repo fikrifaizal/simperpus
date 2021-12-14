@@ -1,0 +1,17 @@
+{
+    "name": "fikrifaizal/simperpus",
+    "description": "Sistem Informasi Perpustakaan Sekolah",
+    "type": "project",
+    "license": "UIN SK",
+    "autoload": {
+        "psr-4": {
+            "Fikrifaizal\\Simperpus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fikrifaizal",
+            "email": "fikrifaizal40@gmail.com"
+        }
+    ]
+}
