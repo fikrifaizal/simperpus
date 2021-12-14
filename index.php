@@ -1,4 +1,27 @@
 <?php 
+
+$project_location = "/SimPerpus%20SMK%20Muh%201%20Surakarta";
+$me = $project_location;
+
+// For get URL PATH
+$request = $_SERVER['REQUEST_URI'];
+
+switch ($request) {
+    case $me.'/' :
+        require "home.php";
+        break;
+    case $me.'/buku' :
+        require "views/about.php";
+        break;
+    case $me.'/contact' :
+        require "views/contact.php";
+        break;
+    default:
+        http_response_code(404);
+        echo "404";
+        break;
+}
+
 include_once('confiq.php');
 //cek login
 // user
