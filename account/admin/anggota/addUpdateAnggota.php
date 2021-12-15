@@ -38,7 +38,12 @@ if($action == "tambah"){
             $q="";
             foreach ($row as $key => $cell) {
               // get data from excel
-              $q.="'".$cell. "',";
+              if(str_contains($cell, "ubahyah")){
+                $passwd = md5($cell);
+                $q.="'".$passwd. "',";
+              } else {
+                $q.="'".$cell. "',";
+              }
             }
             // insert into database
             $query = "INSERT INTO ".$excel->sheetName(0)." VALUES (".rtrim($q,",").")";
@@ -112,6 +117,13 @@ elseif($action == "delete"){
     $deleteBuku = mysqli_query($conn, $delete);
 
     header("Location: anggota.php");
+  }
+}
+
+// check function/method of str_contains
+if (!function_exists('str_contains')) {
+  function str_contains(string $haystack, string $needle): bool {
+      return '' === $needle || false !== strpos($haystack, $needle);
   }
 }
 ?>
