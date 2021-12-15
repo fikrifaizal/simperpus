@@ -65,7 +65,6 @@ if($action == "tambah"){
     $insert = "INSERT INTO `buku`(`nomor_klasifikasi`, `isbn`, `nomor_rak`, `judul`, `penulis`, `penerbit`, `tahun_terbit`, `stok`)
                 VALUES ('$nomorklasifikasi', '$getIsbn', '$rak', '$getJudul', '$getPenulis', '$getPenerbit', '$getTahunterbit', '$stok')";
     $tambahBuku = mysqli_query($conn, $insert);
-
     
     $setDangerCondition = true;
     $setDangerText = "Data buku berhasil di upload ke database";

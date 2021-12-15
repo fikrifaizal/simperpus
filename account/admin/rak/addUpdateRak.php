@@ -171,6 +171,7 @@ elseif($action == "delete"){
                 </div>
               </div>
             </form>
+
             <!-- Modal Danger -->
             <div class="modal fade" tabindex="-1" id="modalDanger" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" >
               <div class="modal-dialog modal-dialog-centered">
@@ -192,5 +193,16 @@ elseif($action == "delete"){
         </div>
       </div>
     </main>
+
+    <!-- Show Danger Modal -->
+    <?php
+      if($setDangerCondition) {
+        echo '<script type="text/javascript">
+                $(document).ready(function(){
+                  $("#modalDanger").modal("show");
+                });
+              </script>';
+      } 
+    ?>
   </body>
 </html>
