@@ -5,15 +5,26 @@ $admin_id = $_SESSION['id'];
 $admin_name = $_SESSION['nama'];
 $setDangerCondition = false;
 $setDangerText = "";
+$newStokBuku = 0;
+$newStokRak = 0;
+$nomorklasifikasi = 0;
+$nomorrak = 0;
 
 if(isset($_POST['tambah'])){
   $nomorklasifikasi = $_POST['buku'];
 
-  $getBuku = "SELECT COUNT(nomor_klasifikasi) as buku FROM `buku` WHERE `nomor_klasifikasi` LIKE '$nomorklasifikasi'";
+  $getBuku = "SELECT COUNT(nomor_klasifikasi) as buku, stok, nomor_rak FROM `buku` WHERE `nomor_klasifikasi` LIKE '$nomorklasifikasi'";
   $queryBuku = mysqli_query($conn, $getBuku);
   $data = mysqli_fetch_array($queryBuku, MYSQLI_ASSOC);
+  $newStokBuku = $data['stok']-1;
+  $nomorrak = $data['nomor_rak'];
+
+  $getRak = "SELECT `jumlah_buku` FROM `rak` WHERE `nomor_rak` LIKE '$nomorrak'";
+  $queryRak = mysqli_query($conn, $getRak);
+  $dataRak = mysqli_fetch_array($queryRak, MYSQLI_ASSOC);
+  $newStokRak = $dataRak['jumlah_buku']-1;
   
-  if($data['buku'] > 0){
+  if($data['buku'] > 0 && $data['stok'] > 0){
     $anggota = $_POST['anggota'];
 
     $getBuku = "SELECT COUNT(nomor_anggota) as anggota FROM `anggota` WHERE `nomor_anggota` LIKE '$anggota'";
@@ -30,7 +41,14 @@ if(isset($_POST['tambah'])){
     
       $query = "INSERT INTO `transaksi`(`nomor_klasifikasi`, `nomor_anggota`, `nomor_petugas`, `tanggal_pinjam`, `durasi`, `tanggal_kembali`, `keterlambatan`, `selesai`)
                 VALUES ('$nomorklasifikasi', '$anggota', '$admin_id', '$tanggal_pinjam', '$durasi', '$tanggal_kembali', 0, 0)";
-      $tambahTransaksi = mysqli_query($conn, $query);      
+      $tambahTransaksi = mysqli_query($conn, $query);
+
+      $queryBuku = "UPDATE `buku` set `stok`='$newStokBuku' WHERE `nomor_klasifikasi` LIKE '$nomorklasifikasi'";
+      $updateBuku = mysqli_query($conn, $queryBuku);
+
+      $queryRak = "UPDATE `rak` set `jumlah_buku`='$newStokRak' WHERE `nomor_rak` LIKE '$nomorrak'";
+      $updateRak = mysqli_query($conn, $queryRak);
+
       $setDangerCondition = true;
       $setDangerText = "Transaksi Peminjaman berhasil";
     } else {
@@ -39,7 +57,7 @@ if(isset($_POST['tambah'])){
     }
   } else {
     $setDangerCondition = true;
-    $setDangerText = "Nomor Klasifikasi Buku salah";
+    $setDangerText = "Nomor Klasifikasi Buku salah atau Stok Buku habis";
   }
 }
 

@@ -47,6 +47,8 @@ if(isset($_COOKIE['id'])){
 <html>
   <head>
     <title>Simperpus</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="file/logo-login.png">
   </head>
   <body>
     <!-- sidebar & navbar -->

@@ -65,6 +65,9 @@ elseif(isset($_POST['loginadmin'])){
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../file/logo-login.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" />
@@ -108,8 +111,8 @@ elseif(isset($_POST['loginadmin'])){
                   </label>
                 </div>
               </div>
-              <button type="submit" name="loginuser" class="w-100 mb-1 btn btn-lg btn-primary">Login</button>
-              <a role="button" class="w-100 mb-3 btn btn-lg btn-secondary" href="../home.php">Kembali</a>
+              <button type="submit" name="loginuser" class="w-100 mb-1 btn btn-primary">Login</button>
+              <a role="button" class="w-100 mb-2 btn btn-secondary" href="../home.phps">Kembali</a>
             </form>
           </div>
 
@@ -132,8 +135,8 @@ elseif(isset($_POST['loginadmin'])){
                   </label>
                 </div>
               </div>
-              <button type="submit" name="loginadmin" class="w-100 mb-1 btn btn-lg btn-primary">Login</button>
-              <a role="button" class="w-100 mb-3 btn btn-lg btn-secondary" href="../index.php">Kembali</a>
+              <button type="submit" name="loginadmin" class="w-100 mb-1 btn btn-primary">Login</button>
+              <a role="button" class="w-100 mb-2 btn btn-secondary" href="../home.php">Kembali</a>
             </form>
           </div>
         </div>

@@ -15,6 +15,9 @@ $durasi = 0;
 $keterlambatan = 0;
 $denda = 0;
 $hidden = "";
+$newStokBuku = 0;
+$newStokRak = 0;
+$nomorrak = 0;
 
 $action = $_GET['method'];
 // berdasarkan nomor transaksi
@@ -56,6 +59,17 @@ if($action == "transaksi"){
 
   // selesai
   if(isset($_POST['selesai'])){
+    $getBuku = "SELECT `stok`, `nomor_rak` FROM `buku` WHERE `nomor_klasifikasi` LIKE '$nomorbuku'";
+    $queryBuku = mysqli_query($conn, $getBuku);
+    $data = mysqli_fetch_array($queryBuku, MYSQLI_ASSOC);
+    $newStokBuku = $data['stok']+1;
+    $nomorrak = $data['nomor_rak'];
+
+    $getRak = "SELECT `jumlah_buku` FROM `rak` WHERE `nomor_rak` LIKE '$nomorrak'";
+    $queryRak = mysqli_query($conn, $getRak);
+    $dataRak = mysqli_fetch_array($queryRak, MYSQLI_ASSOC);
+    $newStokRak = $dataRak['jumlah_buku']+1;
+
     $nomortransaksi = $_POST['nomortransaksi'];
     $tanggalkembali = date('Y-m-d');
     
@@ -65,6 +79,12 @@ if($action == "transaksi"){
               `tanggal_kembali`='$tanggalkembali', `keterlambatan`='$keterlambatan', `selesai`=1
               WHERE `id_peminjaman` LIKE '$nomortransaksi'";
     $updateBuku = mysqli_query($conn, $update);
+
+    $queryBuku = "UPDATE `buku` set `stok`='$newStokBuku' WHERE `nomor_klasifikasi` LIKE '$nomorbuku'";
+    $updateBuku = mysqli_query($conn, $queryBuku);
+
+    $queryRak = "UPDATE `rak` set `jumlah_buku`='$newStokRak' WHERE `nomor_rak` LIKE '$nomorrak'";
+    $updateRak = mysqli_query($conn, $queryRak);
 
     header("Location: pengembalian.php");
   }

@@ -18,6 +18,8 @@ $data_rak = mysqli_fetch_array($query_rak, MYSQLI_ASSOC);
 <html>
   <head>
     <title>Home</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="file/logo-login.png">
     <style>
       /* card hover */      
       .card .icon {
