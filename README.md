@@ -4,5 +4,5 @@
 [Demo](https://simperpus-smkmuh1solo.000webhostapp.com/ "Lihat Demo")
 
 Login:
-User -> 19101010001:123
-Admin -> 199901012001012001:admin
+* User -> 19101010001:123
+* Admin -> 199901012001012001:admin
